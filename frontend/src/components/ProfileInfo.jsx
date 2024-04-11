@@ -8,17 +8,16 @@ import { FaXTwitter } from "react-icons/fa6";
 import { TfiThought } from "react-icons/tfi";
 import { FaEye } from "react-icons/fa";
 import { formatMemberSince } from "../utils/functions";
+import LikeProfile from "./LikeProfile";
 
-const ProfileInfo = ({ userProfile }) => { 
- 
-
+const ProfileInfo = ({ userProfile }) => {
 
   const memberSince = formatMemberSince(userProfile?.created_at);
 
   return (
     <div className="lg:w-1/3 w-full flex flex-col gap-2 lg:sticky md:top-10">
       <div className="bg-glass rounded-lg p-4">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-3 items-center">
           {/* User Avatar */}
           <a href={userProfile?.html_url} target="_blank" rel="noreferrer">
             <img
@@ -28,7 +27,9 @@ const ProfileInfo = ({ userProfile }) => {
             />
           </a>
           {/* View on Github */}
+
           <div className="flex gap-2 items-center flex-col">
+            <LikeProfile userProfile={userProfile} />
             <a
               href={userProfile?.html_url}
               target="_blank"
@@ -127,6 +128,4 @@ const ProfileInfo = ({ userProfile }) => {
     </div>
   );
 };
-
-
-export default ProfileInfo
+export default ProfileInfo;
